@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:task_manager/ui/screen/otp_varification.dart';
+import 'package:task_manager/ui/utills/inputField.dart';
+import 'package:task_manager/ui/widgets/commonWidgets.dart';
+
+// ignore: camel_case_types
+class Email_Verify_Screen extends StatefulWidget {
+  const Email_Verify_Screen({Key? key}) : super(key: key);
+
+  @override
+  State<Email_Verify_Screen> createState() => _Email_Verify_ScreenState();
+}
+
+// ignore: camel_case_types
+class _Email_Verify_ScreenState extends State<Email_Verify_Screen> {
+   // ignore: non_constant_identifier_names
+   void _Go_to_OTP_Page(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Otp_Verify_Screen(),));
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Background(
+          child:SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Eamil Verification",style: Theme.of(context).textTheme.headlineLarge),
+                    const SizedBox(height: 4,),
+                    Text("A 6 digits pin will sent to your email address",style: Theme.of(context).textTheme.bodyMedium),
+                    const SizedBox(height: 20,),
+                    const MyTextField( nameOfLabel: 'Email',obs:false),
+                    const SizedBox(height: 20,),
+                    CustomButton(onPressed: _Go_to_OTP_Page, buttonText: 'Verify',),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const  Text("have an account?",style: TextStyle(fontWeight: FontWeight.bold),),
+                        TextButton(onPressed: (){
+                          Navigator.pop(context);
+                          },
+                            child: const Text("SignIn")),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
+      ),
+    ) ;
+  }
+}
